@@ -1,115 +1,107 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { useState } from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              pages/index.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <>
+      <Head>
+        <title>Instant Portfolio Builder</title>
+        <meta name="description" content="Build and deploy your personal portfolio instantly." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <div className="min-h-screen">
+        <header className="bg-gradient-to-b from-[#292b60] to-black p-4">
+          <div className="container mx-auto flex justify-between items-center">
+            <h1 className="text-2xl font-bold">⚡ XFolio</h1>
+            <div className="hidden md:flex items-center space-x-6">
+              <Link href="#features" className="text-gray-300 hover:text-white">Features</Link>
+              <Link href="#how" className="text-gray-300 hover:text-white">How It Works</Link>
+              <a href="https://github.com/Yagami-light45/Instant-Portfolio-Builder-Web-App" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">GitHub</a>
+              <Link href="/builder">
+                <button className="bg-blue-700 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600">Start Building</button>
+              </Link>
+            </div>
+            <div className="md:hidden">
+              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white text-3xl">
+                &#9776;
+              </button>
+            </div>
+          </div>
+          {isMenuOpen && (
+            <div className="md:hidden mt-4 flex flex-col space-y-4 items-center">
+              <Link href="#features" className="text-gray-300 hover:text-white">Features</Link>
+              <Link href="#how" className="text-gray-300 hover:text-white">How It Works</Link>
+              <a href="https://github.com/Yagami-light45/Instant-Portfolio-Builder-Web-App" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">GitHub</a>
+              <Link href="/builder">
+                <button className="bg-blue-700 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600 w-full">Start Building</button>
+              </Link>
+            </div>
+          )}
+        </header>
+
+        <main>
+          <section
+            className="text-center py-20 px-5"
+            style={{ backgroundImage: "url('/ocean.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            <h1 className="text-5xl font-bold mb-4 text-shadow">⚡XFolio</h1>
+            <h2 className="text-4xl font-semibold mb-6 text-shadow">Build Your Portfolio Instantly</h2>
+            <p className="max-w-3xl mx-auto mb-8">
+              Creating a stunning personal portfolio has never been easier. With our platform, you don’t need to write a single line of code — just enter your details, and your website is ready in one click.
+            </p>
+            <Link href="/builder">
+              <button className="bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-blue-600">Get Started Now</button>
+            </Link>
+            <div className="mt-20 flex justify-center">
+                <Image src="/welcome_page.png" alt="Portfolio Example" width={800} height={450} className="rounded-lg shadow-2xl" />
+            </div>
+          </section>
+
+          <div className="bg-gradient-to-b from-[#000110] via-[#001a40] to-[#000110] py-10">
+            <section id="how" className="py-16 text-center">
+              <h2 className="text-4xl font-bold mb-10">How It Works</h2>
+              <div className="flex flex-wrap gap-8 justify-center max-w-5xl mx-auto px-5">
+                <div className="bg-[#003891] p-6 rounded-lg shadow-lg max-w-sm">
+                  <h3 className="text-2xl font-semibold mb-2">📝 Fill the Form</h3>
+                  <p>Enter your name, bio, projects, and social links.</p>
+                </div>
+                <div className="bg-[#003891] p-6 rounded-lg shadow-lg max-w-sm">
+                  <h3 className="text-2xl font-semibold mb-2">👀 Live Preview</h3>
+                  <p>See your portfolio update in real time as you type.</p>
+                </div>
+                <div className="bg-[#003891] p-6 rounded-lg shadow-lg max-w-sm">
+                  <h3 className="text-2xl font-semibold mb-2">🚀 Publish & Share</h3>
+                  <p>Get a shareable link or download your portfolio.</p>
+                </div>
+              </div>
+            </section>
+
+            <section id="features" className="py-16 text-center">
+              <h2 className="text-4xl font-bold mb-10">Why Use Us?</h2>
+              <div className="flex flex-wrap gap-4 justify-center max-w-4xl mx-auto px-5">
+                <div className="bg-[#003891] p-4 rounded-lg shadow-lg">📱 Responsive Design</div>
+                <div className="bg-[#003891] p-4 rounded-lg shadow-lg">🎨 Clean Templates</div>
+                <div className="bg-[#003891] p-4 rounded-lg shadow-lg">🔗 Shareable Links</div>
+                <div className="bg-[#003891] p-4 rounded-lg shadow-lg">💾 Download as HTML</div>
+                <div className="bg-[#003891] p-4 rounded-lg shadow-lg">🌗 Light/Dark Mode</div>
+              </div>
+            </section>
+          </div>
+        </main>
+
+        <footer className="bg-black text-center p-6">
+          <div className="flex justify-center space-x-6 mb-4">
+            <Link href="#how" className="text-gray-400 hover:text-white">How It Works</Link>
+            <a href="https://github.com/Yagami-light45/Instant-Portfolio-Builder-Web-App" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">GitHub</a>
+          </div>
+          <p className="text-gray-500">© 2025 Instant Portfolio Builder</p>
+        </footer>
+      </div>
+    </>
   );
 }
