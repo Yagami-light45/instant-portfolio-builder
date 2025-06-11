@@ -1,0 +1,279 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: #f5f5f5;
+  background-color: #000110;
+  overflow-x: hidden;
+}
+
+@keyframes fallFromTop {
+  0% { opacity: 0; transform: translateY(-100px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2, h3, p, a, .start-btn, .step, .feature, .hero img {
+  opacity: 0;
+  animation: fallFromTop 1s ease forwards;
+}
+
+h1 { animation-delay: 0.1s; }
+h2 { animation-delay: 0.2s; }
+h3 { animation-delay: 0.3s; }
+p  { animation-delay: 0.4s; }
+
+.step { animation-delay: 0.5s; }
+
+
+ .feature { animation-delay: 0.8s; }
+
+
+.hero img { animation-delay: 0.8s; }
+
+header {
+  background: linear-gradient(to bottom, #292b60, #000000);
+  color: #e0e0e0;
+  padding: 1rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav h1 {
+
+  margin-left: 1.25rem;
+  font-size: 1.5rem;
+}
+
+.nav nav {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.nav a {
+  color: #bdbdbd;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: #fff;
+  text-shadow: 1px 1px 2px #bdbdbd;
+}
+
+.start-btn {
+  
+  padding: 0.625rem 1rem;
+  background: #0704b7;
+  border: 1px solid #f4f7fa;
+  border-radius: 0.375rem;
+  color: #efeded;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  min-width: 10rem;
+  
+}
+
+.start-btn:hover {
+  background: #4497db;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background-color: #3c096c;
+  background-image: url(/ocean.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #f5f5f5;
+}
+
+.top {
+  margin-top: 2rem;
+}
+
+.hero h1,
+.hero h2 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+  color: #f5f5f5;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.bottom img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+
+.both {
+  background: linear-gradient(to bottom, #000110 0%, #001a40 25%, #003891 50%, #001a40 75%, #000000 100%);
+  color: #f5f5f5;
+}
+
+.how-it-works,
+.features {
+  padding: 3.75rem 1.25rem;
+  max-width: 62.5rem;
+  margin: auto;
+  text-align: center;
+}
+
+.steps, .feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.step, .feature {
+  background: #003891;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 3px 3px 5px rgb(254, 254, 254);
+  color: #ddd;
+  flex: 1 1 15rem;
+  max-width: 20rem;
+  text-align: center;
+}
+
+
+
+footer {
+  background-color: #000000;
+  color: #ddd;
+  text-align: center;
+  padding: 1.25rem;
+}
+
+footer a {
+  color: #ccc;
+  margin: 0 0.625rem;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: white;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: 750px) {
+  .menu-toggle {
+    display: block;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    margin-right: 1rem;
+  }
+
+  .nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+  }
+
+  .nav nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #1a1a1a;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .nav nav.show {
+    display: flex;
+  }
+
+  .nav a,
+  .nav button {
+    text-align: left;
+    width: 100%;
+  }
+
+  .hero {
+    padding: 3rem 1rem;
+    background-position: top center;
+  }
+
+  .top {
+    margin-top: 1rem;
+  }
+
+  .top h1,
+  .top h2 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .top p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .bottom {
+    display: none;
+  }
+
+  .step, .feature {
+    width: 100%;
+    max-width: 22rem;
+    padding: 1rem;
+  }
+
+  .start-btn {
+    width: 100%;
+    max-width: 14rem;
+    padding: 0.75rem 1rem;
+    margin: 1rem auto;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  footer {
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  footer p {
+    margin-top: 1rem;
+  }
+}
